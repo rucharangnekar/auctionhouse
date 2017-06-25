@@ -1,0 +1,40 @@
+{% extends 'homepage/base.html' %}
+{% block css %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/style.css' %}"/>
+<style>
+    body{
+    background-image: url("http://www.pixeden.com/media/k2/galleries/136/002-subtle-light-pattern-background-texture.jpg");
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    {% if items %}
+    <ul>
+    {% for i in items %}
+        <div class="column">
+         <div class="col-sm-6 col-md-4">
+             <div class="thumbnail ">
+                 <a href="{% url 'homepage:detail' i.item_id %}" >
+                        <img src="{{ i.item_pic }}" alt="Norway" style="width:100%;height: 40%" class="w3-hover-opacity">
+                 </a>
+             </div>
+             <div class="thumbnail" style="border: 2px solid black">
+                <br>
+                <span style="word-spacing: 15%">{{ i.item_title }}</span>
+                <br>
+                <span class="fa fa-rupee" style="word-spacing: 20px; font-size:150%"> {{ i.item_price }}</span>
+                 <br><br>
+             </div>
+
+         </div>
+         </div>
+    {% endfor %}
+    </ul>
+    {% else %}
+        <p>No product found.</p>
+    {% endif %}
+</div>
+{% endblock %}

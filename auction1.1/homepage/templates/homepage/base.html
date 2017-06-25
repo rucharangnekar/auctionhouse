@@ -1,0 +1,153 @@
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+   <title>eBidder</title>
+   {% block title %}{% endblock %}
+   <!--loads the path to your static files-->
+   {% load staticfiles %}
+   {% load static %}
+    <!-- Bootstrap -->
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+   <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+   <link rel="stylesheet" type="text/css" href="{% static 'homepage/style.css' %}"/>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+{% block css %}{% endblock %}
+</head>
+<body>
+   <nav class="navbar navbar-inverse" style="border-radius:0px !important; margin-bottom:0px;">
+      <div class="container-fluid">
+      <!--logo-->
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+            </button>
+
+         </div>
+         <!--Items-->
+         <div class="collapse navbar-collapse" id="topNavBar">
+            <ul class="nav navbar-nav">
+               <li class=" ">
+                  <a href="{% url 'homepage:index' %}">
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> AuctionHouse
+                  </a>
+               </li>
+                <li class="">
+                  <a href="{% url 'homepage:index' %}">
+                     <span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home
+                  </a>
+               </li>
+               <li class="">
+                  <a href="{% url 'homepage:team' %}">
+                     <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;Our team
+                  </a>
+               </li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search" method="get" action="#">
+               <div class="form-group">
+                  <input type="text" class="form-control" name="q" value="" style="height:30px">
+               </div>
+               <button type="submit" class="btn btn-default">Search</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+               <li class="">
+                     <a href="{% url 'homepage:cart' %}">
+                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp;Cart
+                     </a>
+               </li>
+               {% if request.user.is_authenticated %}
+               <li class="">
+                  <a href="{% url 'homepage:logout' %}">
+                     <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Logout
+                  </a>
+               </li>
+               <li class="icon">
+                  <a href="javascript:void(0);" style="...." onclick="myFunction()"></a>
+               </li>
+               {% else %}
+               <li class="">
+                     <a href="{% url 'homepage:register' %}">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Login
+                     </a>
+               </li>
+               <li class="icon">
+                  <a href="javascript:void(0);" style="...." onclick="myFunction()"></a>
+               </li>
+            </ul>
+               {% endif %}
+           </div>
+      </div>
+   </nav>
+{% block body %}
+{% endblock %}
+{% block content %}
+{% endblock %}
+
+{% block formbody %}
+{% endblock %}
+<hr class="divider">
+<footer class="footer-distributed">
+
+         <div class="footer-left">
+
+            <h3>eBidder<span>Online Auction House</span></h3>
+            <p class="footer-links">
+               <a href="{% url 'homepage:index' %}">Home</a>
+               <a href="#">About</a>
+               <a href="#">Contact</a>
+            </p>
+            <p class="footer-company-name">eBidder &copy; 2017</p>
+         </div>
+         <div class="footer-center">
+            <div>
+               <i class="fa fa-map-marker"></i>
+               <p> Sardar Patel Institute of Technology, Bhavan’s Campus</p>
+               <p><span>Munshi Nagar, Andheri (West), Mumbai 400 058</span></p>
+            </div>
+            <div>
+               <i class="fa fa-phone"></i>
+               <p> (91)-(022)-26707440, 26287250 </p>
+            </div>
+            <div>
+               <i class="fa fa-envelope"></i>
+               <p><a href="mailto:support@company.com"> eBidder.spit@gmail.com </a></p>
+            </div>
+         </div>
+         <div class="footer-right">
+            <p class="footer-company-about">
+               <span>About the company</span>
+                We auction some of the best things in the world!
+            </p>
+            <div class="footer-icons">
+               <a href="https://www.facebook.com/atn.spit/"><i class="fa fa-facebook"></i></a>
+               <a href="https://twitter.com"><i class="fa fa-twitter"></i></a>
+               <a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a>
+               <a href="https://github.com"><i class="fa fa-github"></i></a>
+            </div>
+         </div>
+      </footer>
+<script>
+   function myFunction(){
+   var x=document.getElementById("");
+   if(x.className===""){
+      x.className+="responsive";
+      }
+      else{
+      x.className="";
+      }
+      }
+</script>
+   <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,462 @@
+{% extends 'homepage/base.html' %}
+{% block css %}
+{% load staticfiles %}
+{% load static %}
+<link rel='stylesheet' href="{% static 'homepage/reg.css' %}" type='text/css'/>
+<style>
+* { -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box; box-sizing:border-box; }
+
+html { width: 100%; height:100%; overflow:hidden; }
+
+body {
+	width: 100%;
+	height:100%;
+	font-family: 'Open Sans', sans-serif;
+	background: #092756;
+	background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),-moz-linear-gradient(top,  rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), -moz-linear-gradient(-45deg,  #670d10 0%, #092756 100%);
+	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -webkit-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -webkit-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+	background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -o-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -o-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+	background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -ms-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -ms-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), linear-gradient(to bottom,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), linear-gradient(135deg,  #670d10 0%,#092756 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
+}
+
+.login {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -150px 0 0 -150px;
+	width:100px;
+	height:100px;
+}
+.login h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+
+input {
+	width: 20%;
+	margin-bottom: 10px;
+	background: rgba(0,0,0,0.3);
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 13px;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+	-webkit-transition: box-shadow .5s ease;
+	-moz-transition: box-shadow .5s ease;
+	-o-transition: box-shadow .5s ease;
+	-ms-transition: box-shadow .5s ease;
+	transition: box-shadow .5s ease;
+}
+input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
+
+.loginmodal-container {
+  padding: 30px;
+  max-width: 450px;
+  width: 100%;
+  background-color: #F7F7F7;
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: roboto;
+}
+
+.loginmodal-container h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-family: roboto;
+}
+
+.loginmodal-container input[type=submit] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+   color: green;
+}
+
+.loginmodal-container input[type=text], input[type=password] {
+  height: 44px;
+  font-size: 16px;
+  width: 80%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+   color: green;
+}
+.loginmodal-container input[type=password], input[type=text] {
+  height: 44px;
+  font-size: 16px;
+  width: 80%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+   color: green;
+}
+
+#id_contact_number {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+#password {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+#id_username {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+#id_first_name {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+#id_last_name {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+#id_cpassword {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+#id_email {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.loginmodal-container input[type=text]:hover, input[type=password]:hover {
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+/*
+.loginmodal {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 8px;
+}
+*/
+.loginmodal-submit {
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1);
+  background-color: #4d90fe;
+  padding: 17px 0px;
+  font-family: roboto;
+  font-size: 14px;
+}
+
+.loginmodal-submit:hover {
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #357ae8;
+}
+
+.loginmodal-container a {
+  text-decoration: none;
+  color: #666;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.6;
+  transition: opacity ease 0.5s;
+}
+
+ .popover.primary {
+    border-color:#337ab7;
+}
+.popover.primary>.arrow {
+    border-top-color:#337ab7;
+}
+.popover.primary>.popover-title {
+    color:#fff;
+    background-color:#337ab7;
+    border-color:#337ab7;
+}
+.popover.success {
+    border-color:#d6e9c6;
+}
+.popover.success>.arrow {
+    border-top-color:#d6e9c6;
+}
+.popover.success>.popover-title {
+    color:#3c763d;
+    background-color:#dff0d8;
+    border-color:#d6e9c6;
+}
+.popover.info {
+    border-color:#bce8f1;
+}
+.popover.info>.arrow {
+    border-top-color:#bce8f1;
+}
+.popover.info>.popover-title {
+    color:#31708f;
+    background-color:#d9edf7;
+    border-color:#bce8f1;
+}
+.popover.warning {
+    border-color:#faebcc;
+}
+.popover.warning>.arrow {
+    border-top-color:#faebcc;
+}
+.popover.warning>.popover-title {
+    color:#8a6d3b;
+    background-color:#fcf8e3;
+    border-color:#faebcc;
+}
+.popover.danger {
+    border-color:#ebccd1;
+}
+.popover.danger>.arrow {
+    border-top-color:#ebccd1;
+}
+.popover.danger>.popover-title {
+    color:#a94442;
+    background-color:#f2dede;
+    border-color:#ebccd1;
+}
+</style>
+
+<script>
+    $(document).ready(function(){
+//minimum 8 characters
+var bad = /(?=.{8,}).*/;
+//Alpha Numeric plus minimum 8
+var good = /^(?=\S*?[a-z])(?=\S*?[0-9])\S{8,}$/;
+//Must contain at least one upper case letter, one lower case letter and (one number OR one special char).
+var better = /^(?=\S*?[A-Z])(?=\S*?[a-z])((?=\S*?[0-9])|(?=\S*?[^\w\*]))\S{8,}$/;
+//Must contain at least one upper case letter, one lower case letter and (one number AND one special char).
+var best = /^(?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9])(?=\S*?[^\w\*])\S{8,}$/;
+
+$('#password').on('keyup', function () {
+    var password = $(this);
+    var pass = password.val();
+    var passLabel = $('[for="password"]');
+    var stength = 'Weak';
+    var pclass = 'danger';
+    if (best.test(pass) == true) {
+        stength = 'Very Strong';
+        pclass = 'success';
+    } else if (better.test(pass) == true) {
+        stength = 'Strong';
+        pclass = 'warning';
+    } else if (good.test(pass) == true) {
+        stength = 'Almost Strong';
+        pclass = 'warning';
+    } else if (bad.test(pass) == true) {
+        stength = 'Weak';
+    } else {
+        stength = 'Very Weak';
+    }
+    var popover = password.attr('data-content', stength).data('bs.popover');
+    popover.setContent();
+    popover.$tip.addClass(popover.options.placement).removeClass('danger success info warning primary').addClass(pclass);
+});
+
+$('input[data-toggle="popover"]').popover({
+    placement: 'top',
+    trigger: 'focus'
+});
+})
+</script>
+<script>
+    {% if messages %}
+        alert('{{ messages }}');
+    {% endif %}
+</script>
+   {% endblock %}
+   {% block body %}
+   <div class="loginmodal-container">
+	<h1>Login</h1>
+    <form action="{% url 'homepage:login' %}" method="POST" id="form" class="well" enctype="multipart/form-data">
+            {% csrf_token %}
+        <input type="text" name="username" placeholder="Username"><br><br>
+               <input type="password" name="password" placeholder="Password"><br><br>
+               <input type="submit" name="login" class="button b1" value="Let me in.">
+        <p><span><h3>For new user, Sign up</h3></span></p><br>
+             <a href="#" data-toggle="modal" data-target="#login-modal" class="button b1" role="button">Sign up</a><br><br>
+             <!-- </form>-->
+                <p>Forgot password ?</p><a href="{% url 'reset_password_reset1' %}">Reset It</a>
+    </form>
+</div>
+
+<form action="{% url 'homepage:regi' %}" onsubmit="return check(this)" method="POST" id="form1" enctype="multipart/form-data">
+        {% csrf_token %}
+   <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+         <div class="modal-dialog">
+            <div class="loginmodal-container">
+                <div class="row">
+                   <h3>Registration</h3>
+                    <hr>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                             <input type="text" name="first_name" value="" placeholder="first name" id="id_first_name" class="fc" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                            <input type="text" name="last_name" value="" placeholder="last name" id="id_last_name" class="fc" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>User Name</label>
+                        <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                             <input type="text" name="username" value="" placeholder="username" id="id_username" class="fc" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact</label>
+                        <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                            <input type="text" name="Contact" value="" placeholder="contact number" id="id_contact_number" class="fc" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                            <input type="text" name="email" value=""  placeholder="Your Email" class="fc" id="id_email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>{{form.non_field_errors}}
+                        <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                            <input type="password" class="fc" name="password" id="password" placeholder="Password" required data-toggle="popover" title="Password Strength" data-content="Enter Password...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <div class="input-group"> <span class="input-group-addon"><span class="glyphicon glyphicon-resize-vertical"></span></span>
+                            <input type="password" name="cpassword" value=""  placeholder="Confirm Password" class="fc" id="id_cpassword" required>
+                        </div>
+                    </div>
+                    <div>
+                      <button type="submit" class="button1">Sign Up</button><pre></pre>
+                    </div>
+                </div>
+                </div>
+           </div>
+         </div>
+        </div>
+    <script>
+function check(form) {
+    var error = "";
+    var illegalChars = /[\W_]/; // allow only letters and numbers
+
+
+    if ((form.password.value.length < 7) || (form.password.value.length > 15)) {
+        error = "The password is the wrong length. \n";
+        alert(error);
+        return false;
+
+    } else if (illegalChars.test(form.password.value)) {
+        error = "The password contains illegal characters.\n";
+        alert(error);
+        return false;
+
+    } else if ( (form.password.value.search(/[a-zA-Z]+/)==-1) || (form.password.value.search(/[0-9]+/)==-1) ) {
+        error = "The password must contain at least one numeral.\n";
+        fld.style.background = 'Yellow';
+        alert(error);
+        return false;
+
+    } else {
+        fld.style.background = 'White';
+           return true;
+    }
+
+}
+</script>
+</form>
+{% endblock %}

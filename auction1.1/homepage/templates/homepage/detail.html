@@ -1,0 +1,182 @@
+{% extends 'homepage/base.html' %}
+{% block css %}
+{% load staticfiles %}
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- Custom CSS -->
+<link href="css/shop-item.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'homepage/jquery.countdown.css' %}">
+<style>
+body{
+background-image: url("http://www.designbolts.com/wp-content/uploads/2013/02/Pineapple-cut-Grey-Seamless-Pattern-For-Website-Background.jpg");
+}
+#defaultCountdown {
+width: 240px;
+height: 45px;
+z-index:1;
+clear:both;
+}
+
+.thumbnail img {
+    max-height: 100%;
+    max-width: 100%;
+}
+</style>
+{% endblock %}
+{% block body %}
+<div class="container-fluid">
+<div class="col-md-9">
+    <div class="thumbnail">
+        <div class="w3-half">
+            <div class="column">
+                <div class="col-sm-10 col-md-6">
+                    {% if top %}
+                        <div class="thumbnail">
+                                <img src="{{ top.item_pic }}" alt="{{ top.item_id }}" class="w3-hover-opacity">
+                        </div>
+                    {% endif %}
+                    {% if cup %}
+                        <div class="thumbnail">
+                                <img src="{{ cup.painting_pic }}" alt="{{ cup.painting_id }}" class="w3-hover-opacity">
+                        </div>
+                    {% endif %}
+                    {% if cover %}
+                        <div class="thumbnail">
+                                <img src="{{ cover.antique_pic }}" alt="{{ cover.antique_id }}" class="w3-hover-opacity">
+                        </div>
+                    {% endif %}
+                 </div>
+            </div>
+        </div>
+        <div class="caption-full">
+            {% if top %}
+                <h4 class="pull-right">${{ top.item_price }}</h4>
+                <h4><a href="#">{{ top.item_title }}</a>
+                </h4>
+                <p>{{ top.item_desc }}</p>
+                {% if f %}
+                <button class="btn btn-success" data-toggle="modal" data-target="#myModal">BID</button>
+                {% else %}
+                <a class="btn btn-success" href="{% url 'homepage:bid' top.item_id %}">BID</a>
+                {% endif %}
+                <!--<a class="btn btn-success" href="{% url 'homepage:cart1' top.item_id %}">Add to cart</a>-->
+            <p><strong>The latest bid price: ${{ top.item_bidprice }}</strong></p>
+            {% endif %}
+            {% if cup %}
+                <h4 class="pull-right">${{ cup.painting_price }}</h4>
+                <h4><a href="#">{{ cup.painting_title }}</a>
+                </h4>
+                <p>{{ cup.painting_desc }}</p>
+                {% if f %}
+                <button class="btn btn-success" data-toggle="modal" data-target="#myModal">BID</button>
+                {% else %}
+                <a class="btn btn-success" href="{% url 'homepage:bid' cup.painting_id %}">BID</a>
+                {%  endif %}
+                <!--<a class="btn btn-success" href="{% url 'homepage:cart1' cup.painting_id %}">Add to cart</a>-->
+            <p><strong>The latest bid price: ${{ cup.painting_bidprice }}</strong></p>
+            {% endif %}
+            {% if cover %}
+                <h4 class="pull-right">${{ cover.antique_price }}</h4>
+                <h4><a href="#">{{ cover.antique_title }}</a>
+                </h4>
+                <p>{{ cover.antique_desc }}</p>
+                {% if f %}
+                <button class="btn btn-success" data-toggle="modal" data-target="#myModal">BID</button>
+                {% else %}
+                <a class="btn btn-success" href="{% url 'homepage:bid' cover.antique_id %}">BID</a>
+                {%  endif %}
+                <!--<a class="btn btn-success" href="{% url 'homepage:cart1' cover.antique_id %}">Add to cart</a>-->
+            <p><strong>The latest bid price: ${{ cover.antique_bidprice }}</strong></p>
+            {% endif %}
+        </div>
+        <div id="defaultCountdown"></div>
+        <br>
+        <div class="ratings">
+            <p class="pull-right">3 reviews</p>
+            <p>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                4.0 stars
+            </p>
+        </div>
+    </div>
+    <div class="well">
+        <div class="text-right">
+            <a class="btn btn-success">Leave a Review</a>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                Anonymous
+                <span class="pull-right">10 days ago</span>
+                <p>This product was great in terms of quality. I would definitely buy another!</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                Anonymous
+                <span class="pull-right">12 days ago</span>
+                <p>I've already placed my bid!</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-12">
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                Anonymous
+                <span class="pull-right">15 days ago</span>
+                <p>This item is absolutely my favourite.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>The item is not available right now!</h1>
+      </div>
+        <a href="{% url 'homepage:detail' pk %}" class="btn btn-danger" role="button">Close</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% load static %}
+{% block scripts %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'homepage/jquery.plugin.js' %}"></script>
+<script type="text/javascript" src="{% static 'homepage/jquery.countdown.js' %}"></script>
+<script>
+$(function () {
+	var austDay = new Date();
+	austDay = new Date("{{year}}","{{month}}"-1,"{{date}}");
+	$('#defaultCountdown').countdown({until: austDay, expiryUrl: '{% url 'homepage:cart1' pk %}'});
+	});
+</script>
+{% endblock %}

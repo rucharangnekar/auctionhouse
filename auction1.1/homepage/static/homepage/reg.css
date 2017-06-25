@@ -1,0 +1,167 @@
+.field{
+   margin:5px;
+   background-image:url("http://previews.123rf.com/images/vectomart/vectomart1210/vectomart121000059/15803400-illustration-of-different-shopping-bag-on-sale-background-Stock-Vector.jpg");
+   width:500px;
+   margin-left:400px;
+   margin-bottom:25px;
+  /*  min-height: 450px; */
+  /*  float: right; */
+   font-family:Tahoma, Geneva, sans-serif;
+}
+/*
+#leftcolumn {
+     width: 250px;
+     background-color: #111;
+}
+#rightcolumn {
+     width: 750px;
+     background-color: #777;
+}
+*/
+.regimg{
+   width:100px;
+   height:100px;
+}
+
+legend{
+    text-align: center;
+   border-color:#C0C0C0;
+}
+
+#container{
+ width:400px;
+ margin:auto;
+ margin-bottom:30px;
+ box-shadow:0 0 3px #999;
+   border:10px;
+   border-color:black;
+   box-shadow:0 0 3px #999;
+ }
+
+#container_body{
+ padding:10px;
+ background-color:transparent;
+opacity:0.8;
+ margin-bottom:5px;
+}
+
+pre{
+   background-color:inherit;
+   border-color:transparent;
+}
+
+.form_title{
+text-align:center;
+font-size:25px;
+text-shadow: 0.5px 0.5px #000000;
+ color:#4B0082;
+
+}
+#form_name{
+ padding:25px 0 0 15px;
+}
+.input_name{
+width:300px;
+   text-align:center;
+ padding:5px;
+ margin-left:30px;
+ font-size:18px;
+     border: 2px solid #4CAF50;
+
+ }
+select{
+margin-left:30px;
+ padding:5px;
+ font-size:16px;
+ }
+ .birthday_title{
+ margin-left:30px;
+ font-size:16px;
+ color:#8B919D;
+ font-weight:normal;
+ padding:0 0 10px 0;
+ }
+.input_email{
+   text-align:center;
+ width:300px;
+      margin-left:30px;
+ padding:5px;
+ font-size:18px;
+     border: 2px solid #4CAF50;
+
+ }
+ .input_password{
+ width:300px;
+ text-align:center;
+  margin-left:30px;
+ padding:5px;
+ font-size:18px;
+     border: 2px solid #4CAF50;
+
+ }
+ .input_Re_password{
+ width:300px;
+ text-align:center;
+ padding:5px;
+ font-size:18px;
+ margin-left:30px;
+     border: 2px solid #4CAF50;
+
+ }
+ .button1 {
+   margin-left:30px;
+   width:300px;
+   height:35px;
+    background-color: purple;
+    color:white;
+    border: 2px solid #4CAF50;
+    cursor:pointer;
+   transition: all .5s;
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+
+
+.button1:hover {
+    background-color: #4CAF50;
+    color: white;
+   box-shadow: 10px 10px 5px grey;
+   opacity:1.0;
+}
+#cont{
+    background-color: lightblue;
+    width: 500px;
+    height: 400px;
+    border: 25px #52d9ff;
+    padding: 25px;
+    margin: 25px;
+    float: left;
+}
+#on{
+    text-align: center;
+    font-size: 40px;
+}
+#one{
+    text-align: center;
+    font-size: 40px;
+}
+.b1 {
+    font-size: 16px;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 42px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    /*    -webkit-transition-duration: 0.4s;
+       transition-duration: 0.4s; */
+}
+.b1:hover {
+    background-color: black; /* Green */
+    color: white;
+}

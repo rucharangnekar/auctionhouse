@@ -1,0 +1,128 @@
+{% extends 'homepage/base.html' %}
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    {% block css %}
+    {% load staticfiles %}
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    {% endblock %}
+    {% block body %}
+   <!-- Content -->
+<div class="container-fluid">
+      <div class="row" style="padding-top:5%">
+         <div class="col-md-5 col-sm-5 col-xs-12 col-md-offset-1">
+         <!-- Adress panel -->
+            <div class="panel panel-primary">
+              <div class="panel-heading">Shipping Address</div>
+              <div class="panel-body">
+               <form action="{% url 'homepage:final' %}" method="POST">
+                     {% csrf_token %}
+                  <div class="row">
+                     <div class="col-md-12 col-sm-12 col-xs-12">
+                       <div class="form-group">
+                        <label>Country</label>
+                        <input type="text" class="form-control" name="country" selected>
+                       </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                       <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" name="fname" required>
+                       </div>
+                     </div>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                       <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" name="lname" required>
+                       </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-12 col-sm-12 col-xs-12">
+                       <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" class="form-control" name="address" required>
+                       </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-12 col-sm-12 col-xs-12">
+                       <div class="form-group">
+                        <label>Postal Code</label>
+                        <input type="text" class="form-control" name="code">
+                       </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-12 col-sm-12 col-xs-12">
+                       <div class="form-group">
+                        <label>Contact Number</label>
+                        <input type="text" class="form-control" name="contact" required>
+                       </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-12 col-sm-12 col-xs-12">
+                       <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" required>
+                       </div>
+                     </div>
+                  </div>
+                      <input type="submit" class="btn btn-btn-success" value="Confirm Checkout">
+                </form>
+              </div></div></div>
+         <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+               Review Order
+              </div>
+                {% for t1 in cart %}
+              <div class="panel-body">
+               <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                     <img src="{{ t1.pic }}" style="width:70%;height:15%">
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                     <span class="pull-right" style="font-weight:bold;font-size:20px;">Price: {{ t1.price }}</span>
+                  </div>
+               </div>
+              </div>
+                  {% endfor %}
+
+               <div class="row">
+                  <div class="col-md-6 col-sm-6">
+                     <span style="font-weight:bold;font-size:20px;">Sub Total</span>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                     <span class="pull-right" style="font-weight:bold;font-size:20px;">$ {{ y }}</span>
+                  </div>
+               </div>
+               <hr>
+               <div class="row">
+                  <div class="col-md-6 col-sm-6">
+                     <span style="font-weight:bold;font-size:20px;color:green;">Grand Total</span>
+                  </div>
+                  <div class="col-md-6 col-sm-6">
+                     <span class="pull-right" style="font-weight:bold;font-size:20px;color:green;">$ {{ y }}</span>
+                  </div>
+               </div>
+              </div>
+            </div>
+   </div>
+</div>
+   <!-- End Content -->
+
+    {% load static %}
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="assets/js/bootstrap.min.js"></script>
+{% endblock %}

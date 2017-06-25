@@ -1,0 +1,119 @@
+{% extends 'homepage/base.html' %}
+{% block css %}
+{% load staticfiles %}
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <style>
+body {  background-image: url("http://www.chapwoodinvestments.com/wp-content/uploads/2013/04/Chapwood-website-background-1.jpg");  }
+      .f1_container {
+  position: relative;
+  margin: 10px auto;
+  width: 450px;
+  height: 281px;
+  z-index: 1;
+}
+.f1_container {
+  perspective: 1000px;
+}
+.f1_card {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: all 1.0s linear;
+}
+.f1_container:hover .f1_card {
+  transform: rotateY(180deg);
+  box-shadow: -5px 5px 5px #aaa;
+}
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.face.back {
+  display: block;
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+  padding: 10px;
+  color: white;
+  text-align: center;
+  background-color: #aaa;
+}
+  </style>
+{% endblock %}
+{% block body %}
+
+<div class="w3-row-padding" style="margin:0 -16px">
+        <div class="w3-center w3-padding-64">
+            <span class="w3-xlarge w3-bottombar w3-border-black w3-padding-16">We are a team that adore what we do!</span>
+        </div>
+
+        <div class="w3-third w3-margin-bottom">
+            <div class="w3-card-4">
+                <div class="f1_container">
+                <div class="f1_card" class="shadow">
+                  <div class="front face">
+                 <img src="{% static "images/tanisha.jpg" %}" alt="Tanisha" class="img-responsive center-block" style="width:50%;height:100%">
+                  </div>
+                  <div class="back face center">
+                      <img src="{% static "images/tmr.jpg" %}" alt="tmr" style="width:100%;height:100%">
+                  </div>
+                </div>
+                </div>
+                <div class="w3-container">
+                    <h3>Tanisha Kulkarni</h3>
+                    <p class="w3-opacity">CEO & Founder</p>
+                    <p>Tanisha Kulkarni, new TMR CEO since 2016.</p>
+                    <p><a href="https://www.facebook.com/tanisha.kulkarni.963"><button class="w3-btn">Contact</button></a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-third w3-margin-bottom">
+            <div class="w3-card-4">
+                <div class="f1_container">
+                <div class="f1_card" class="shadow">
+                  <div class="front face">
+                                <img src="{% static "images/maitri.jpg" %}" class="img-responsive center-block" alt="maitri" style="width:50%;height:100%">
+                  </div>
+                  <div class="back face center">
+                      <img src="{% static "images/tmr.jpg" %}" alt="tmr" style="width:100%;height:100%">
+                  </div>
+                </div>
+                </div>
+            <div class="w3-container">
+                <h3>Maitri Parikh</h3>
+                <p class="w3-opacity">Art Director</p>
+                <p>Maitri Parikh, new TMR Art Director since 2016.</p>
+                <p><a href="https://www.facebook.com/maitri.parikh.96"><button class="w3-btn">Contact</button></a></p>
+            </div>
+            </div>
+        </div>
+
+        <div class="w3-third w3-margin-bottom">
+            <div class="w3-card-4">
+                <div class="f1_container">
+                    <div class="f1_card" class="shadow">
+                      <div class="front face">
+                        <img src="{% static "images/ruchapic.jpg" %}" alt="rucha" class="img-responsive center-block" style="width:50%;height:100%">
+                      </div>
+                      <div class="back face center">
+                          <img src="{% static "images/tmr.jpg" %}" alt="tmr" style="width:100%;height:100%">
+                      </div>
+                </div>
+                    </div>
+
+                    <div class="w3-container">
+                        <h3>Rucha Rangnekar</h3>
+                        <p class="w3-opacity">Designer</p>
+                        <p>Rucha Rangnekar, new TMR Designer since 2016.</p>
+                        <p><a href="https://www.facebook.com/rucha.rangnekar"><button class="w3-btn">Contact</button></a></p>
+                    </div>
+            </div>
+        </div>
+  </div>
+
+{% load static %}
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+{% endblock %}
